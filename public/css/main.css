@@ -1,0 +1,13 @@
+body {
+  background-image: url(/media/glitch.gif);
+  font-family: 'Space Mono';
+}
+
+h1 {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 2rem;
+}
+
+#wrapper {
+  padding: 20px;
+}
