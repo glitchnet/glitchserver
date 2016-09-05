@@ -46,3 +46,49 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
 }
+a {
+  text-decoration: none;
+}
+
+h1 {
+  color: #ff6fff;
+  font-size: 2rem;
+  text-shadow: #fff 4px 3px 0;
+}
+
+#wrapper {
+  padding: 10px;
+  position: relative;
+}
+
+footer {
+  background-color: rgba(1, 1, 1, 0.75);
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 5px 10px 10px;
+  color: #fff;
+}
+
+footer h2 {
+  margin-bottom: 5px;
+}
+
+footer a {
+  display: inline-block;
+  margin-right: 10px;
+  color: #ff6a1e;
+}
+
+footer a:after {
+  content: ' >>';
+}
+
+footer a:hover {
+  color: #77ffff;
+}
+
+footer a.on {
+  color: #888;
+}

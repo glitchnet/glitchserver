@@ -19,9 +19,11 @@
     "level": "^1.4.0",
     "nconf": "^0.8.4",
     "pug": "^2.0.0-beta5",
+    "readimage": "^1.1.1",
     "scooter": "^4.0.0",
     "uuid": "^2.0.2",
-    "vision": "^4.1.0"
+    "vision": "^4.1.0",
+    "writegif": "^1.1.0"
   },
   "devDependencies": {
     "nodemon": "^1.10.2"
