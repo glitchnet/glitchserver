@@ -9,10 +9,9 @@
 
   var index = network.indexOf(window.location.origin.split('://')[1]);
   var reduced = [];
+  var mid = network[index];
 
   if (index > -1) {
-    var mid = network[index];
-
     switch(index) {
       case 0:
         var last = network[network.length - 1];
@@ -33,7 +32,7 @@
     link.href = 'http://' + n;
     link.textContent = n + ' ' + cats[Math.floor(Math.random() * (cats.length - 1))];
 
-    if (index === idx) {
+    if (mid === idx) {
       link.classList.add('on');
       link.href = '#';
     } else {
