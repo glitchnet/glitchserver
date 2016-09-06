@@ -3,8 +3,7 @@
   var network = [
     'forestdiaries.com',
     'glitch.plus',
-    'noradio.net',
-    'localhost:3000'
+    'noradio.net'
   ];
   var cats = ['😹', '😻', '😽'];
 
