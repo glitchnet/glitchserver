@@ -28,12 +28,12 @@
     }
   }
 
-  reduced.forEach(function (n) {
+  reduced.forEach(function (n, idx) {
     var link = document.createElement('a');
     link.href = 'http://' + n;
     link.textContent = n + ' ' + cats[Math.floor(Math.random() * (cats.length - 1))];
 
-    if (index > -1) {
+    if (index === idx) {
       link.classList.add('on');
       link.href = '#';
     } else {
