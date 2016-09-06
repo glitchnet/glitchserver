@@ -3,7 +3,8 @@
   var network = [
     'forestdiaries.com',
     'glitch.plus',
-    'noradio.net'
+    'noradio.net',
+    'localhost:3000'
   ];
   var cats = ['😹', '😻', '😽'];
 
@@ -25,6 +26,8 @@
         reduced = [network[index - 1], mid, network[index + 1]];
         break;
     }
+  } else {
+    reduced = network.splice(0, 3);
   }
 
   reduced.forEach(function (n, idx) {
@@ -32,7 +35,7 @@
     link.href = 'http://' + n;
     link.textContent = n + ' ' + cats[Math.floor(Math.random() * (cats.length - 1))];
 
-    if (mid === idx) {
+    if (idx === 1) {
       link.classList.add('on');
       link.href = '#';
     } else {
