@@ -3,7 +3,8 @@
   var network = [
     'forestdiaries.com',
     'glitch.plus',
-    'noradio.net'
+    'noradio.net',
+    'dontcar.es'
   ];
   var cats = ['😹', '😻', '😽'];
 
