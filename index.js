@@ -20,7 +20,8 @@ server.connection({
       xframe: 'sameorigin',
       hsts: {
         includeSubDomains: true,
-        preload: true
+        preload: true,
+        maxAge: 15768000
       }
     }
   }
