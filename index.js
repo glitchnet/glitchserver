@@ -15,11 +15,13 @@ server.connection({
   host: conf.get('domain'),
   port: conf.get('port'),
   routes: {
-    cors: true,
-    xframe: 'sameorigin',
-    hsts: {
-      includeSubDomains: true,
-      preload: true
+    security: {
+      cors: true,
+      xframe: 'sameorigin',
+      hsts: {
+        includeSubDomains: true,
+        preload: true
+      }
     }
   }
 });
