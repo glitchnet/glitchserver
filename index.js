@@ -15,8 +15,8 @@ server.connection({
   host: conf.get('domain'),
   port: conf.get('port'),
   routes: {
+    cors: true,
     security: {
-      cors: true,
       xframe: 'sameorigin',
       hsts: {
         includeSubDomains: true,
