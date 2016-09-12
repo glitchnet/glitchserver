@@ -13,7 +13,10 @@ const server = new Hapi.Server();
 
 server.connection({
   host: conf.get('domain'),
-  port: conf.get('port')
+  port: conf.get('port'),
+  routes: {
+    cors: true
+  }
 });
 
 server.register([Scooter,
@@ -23,10 +26,10 @@ server.register([Scooter,
       defaultSrc: ['self'],
       connectSrc: ['ws:', 'wss:', 'self'],
       imgSrc: ['self'],
-      scriptSrc: ['self', 'data:'],
+      scriptSrc: ['self'],
       styleSrc: ['self', 'https://fonts.googleapis.com'],
       fontSrc: ['self', 'https://fonts.gstatic.com'],
-      mediaSrc: ['self', 'blob:'],
+      mediaSrc: ['self'],
       generateNonces: false
     }
   }
