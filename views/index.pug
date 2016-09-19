@@ -11,11 +11,22 @@ html
 
   body
     #wrapper
-      h1 glitch+
-      block content
+      canvas#octagon(width=700, height=700)
+      #canvas-wrapper
+        canvas#face(width=500, height=444)
+      .links
+        p.credits credits
+        p.webring webring
+      #overlay
+        p altered background gif - original from&#xa0;
+          a(href='http://mrdiv.tumblr.com/post/140708245587/pixeltunneler') mrdiv
 
+      #message
+        input(type='text', placeholder='say something')
+        button(type='button') send
+      #incoming
       footer
-        h2 webring
 
     block scripts
       script(src='/js/footer.js')
+      script(src='/app.bundle.js')

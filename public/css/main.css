@@ -1,4 +1,86 @@
 body {
   background-image: url(/media/glitch.gif);
+  background-attachment: fixed;
+  background-size: cover;
   font-family: 'Space Mono';
+}
+
+canvas {
+  background-color: transparent;
+  margin: 0 auto;
+  opacity: 0.75;
+  position: absolute;
+}
+
+#canvas-wrapper {
+  width: 700px;
+  height: 700px;
+  position: relative;
+}
+
+canvas#face {
+  left: 100px;
+  top: 110px;
+  z-index: 2;
+}
+
+.links {
+  max-width: 130px;
+  min-width: 90px;
+  position: fixed;
+  top: 0;
+  right: 0;
+  color: #fff;
+  font-size: 0.9rem;
+  padding: 5px;
+  z-index: 5;
+}
+
+.links p {
+  padding: 5px;
+  line-height: 1rem;
+  cursor: pointer;
+  background-color: rgba(1, 1, 1, 0.4);
+  margin-bottom: 1px;
+}
+
+.links p:hover {
+  background-color: #0f0;
+  color: #111;
+}
+
+#overlay {
+  padding: 10px 20px;
+  background-color: rgba(193, 229, 18, 0.6);
+  z-index: 4;
+  position: fixed;
+  top: 100px;
+  left: 0;
+  right: 0;
+  line-height: 1.2rem;
+  display: none;
+}
+
+#overlay a {
+  background-color: rgba(193, 229, 18, 0.95);
+  padding: 0 20px;
+  font-size: 1.3rem;
+}
+
+#overlay.on {
+  display: block;
+}
+
+#message {
+  position: fixed;
+  background-color: rgba(1, 1, 1, 0.5);
+  bottom: 0;
+  right: 0;
+  width: 300px;
+  padding: 10px;
+  z-index: 2;
+}
+
+#message input {
+  font-size: 1.5rem;
 }

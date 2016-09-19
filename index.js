@@ -1,15 +1,19 @@
 'use strict';
 
 const Hapi = require('hapi');
-const conf = require('./lib/conf');
+const SocketIO = require('socket.io');
 const http = require('http');
 const Boom = require('boom');
 const Blankie = require('blankie');
 const Scooter = require('scooter');
 
+const conf = require('./lib/conf');
+const operators = require('./lib/operators');
 const { routes } = require('./lib/routes');
 
 const server = new Hapi.Server();
+
+let io;
 
 server.connection({
   host: conf.get('domain'),
@@ -82,7 +86,7 @@ server.route({
   method: 'GET',
   handler: {
     directory: {
-      path: './public',
+      path: ['./public', './build'],
       listing: false,
       index: false
     }
@@ -136,4 +140,17 @@ server.start((err) => {
     console.error(err.message);
     process.exit(1);
   }
+
+  io = SocketIO.listen(server.listener);
+
+  io.on('connection', (socket) => {
+    socket.on('join', (data) => {
+      console.log('joined');
+      socket.emit('message', 'connected ...');
+    });
+
+    socket.on('message', (data) => {
+      operators.say(data.message, socket);
+    });
+  });
 });
