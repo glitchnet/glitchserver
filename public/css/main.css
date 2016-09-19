@@ -71,6 +71,25 @@ canvas#face {
   display: block;
 }
 
+#incoming {
+  background-color: rgba(255, 255, 255, 0.5);
+  color: #111;
+  position: fixed;
+  left: 100px;
+  top: 100px;
+  opacity: 0;
+  font-size: 1rem;
+  padding: 5px;
+  -webkit-transition: 1s opacity;
+  transition: 1s opacity;
+}
+
+#incoming.on {
+  opacity: 1.0;
+  -webkit-transition: 1s opacity;
+  transition: 1s opacity;
+}
+
 #message {
   position: fixed;
   background-color: rgba(1, 1, 1, 0.5);

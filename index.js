@@ -30,7 +30,7 @@ server.connection({
     }
   }
 });
-
+/*
 server.register([Scooter,
   {
     register: Blankie,
@@ -50,7 +50,7 @@ server.register([Scooter,
     return console.log(err);
   }
 });
-
+*/
 server.register([
   {
     register: require('vision')

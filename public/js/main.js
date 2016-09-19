@@ -42,10 +42,14 @@ footerLk.onclick = function () {
   }
 };
 
-// Incoming messages are appended into the page.
 socket.on('messageack', (data) => {
   incoming.textContent = data.message;
+  incoming.classList.add('on');
   currentFace = data.face;
+
+  setTimeout(() => {
+    incoming.classList.remove('on');
+  }, 5000);
 });
 
 let polycoord = [
@@ -109,6 +113,7 @@ function drawPoly() {
   img.onload = function () {
     ctx2.drawImage(img, 50, 20, 400, 444);
   };
+
   img.src = '/media/face' + currentFace + '.png';
 }
 
