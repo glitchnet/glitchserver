@@ -1,0 +1,14 @@
+extend layout
+
+block content
+  .display
+    h2 enter your phone number to sign in
+
+    form(method='post', action='/login')
+      p Enter your number without spaces or dashes
+      p You may need to prepend with + for non-U.S/Canadian numbers
+      input(type='tel', name='phone', required)
+      if error
+        p.error= error
+      input(type='hidden', name='crumb', value=crumb)
+      button(type='submit') send my PIN

@@ -2,5 +2,14 @@
     "domain": "localhost",
     "port": 3000,
     "cookie": "session",
-    "db": "./db"
+    "password": "sessionpasswordsessionpasswordsessionpassword",
+    "session-ttl": 100000000,
+    "db": "./db",
+    "twilioSID": "",
+    "twilioToken": "",
+    "twilioNumber": "15555555555",
+    "phoneSalt": "",
+    "admins": [
+      "<your phone # with area code here>"
+    ]
 }

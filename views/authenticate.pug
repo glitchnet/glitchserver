@@ -1,0 +1,15 @@
+extend layout
+
+block content
+  .display
+    h1 check your phone
+
+    p Enter the PIN from your phone to log in.
+
+    form(method='post', action='/authenticate')
+      input(type='text', name='pin', autocomplete='off', required, autofocus)
+      if error
+        p.error= error
+      input(type='hidden', name='crumb', value=crumb)
+      button(type='submit') send pin
+

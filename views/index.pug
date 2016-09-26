@@ -1,32 +1,24 @@
-doctype html
-html
-  head
-    title glitch.plus
-    meta(charset='utf-8')
-    meta(content='width=device-width, height=device-height, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0', name='viewport')
-    meta(content='yes', name='apple-mobile-web-app-capable')
-    link(rel='stylesheet', href='https://fonts.googleapis.com/css?family=Space+Mono')
-    link(rel='stylesheet', href='/css/shared.css' + version.cache)
-    link(rel='stylesheet', href='/css/main.css' + version.cache)
+extend layout
 
-  body
-    #wrapper
-      canvas#octagon(width=700, height=700)
-      #canvas-wrapper
-        canvas#face(width=500, height=444)
-      .links
-        p.credits credits
-        p.webring webring
-      #overlay
-        p altered background gif - original from&#xa0;
-          a(href='http://mrdiv.tumblr.com/post/140708245587/pixeltunneler') mrdiv
+block content
+  canvas#octagon(width=700, height=700)
+  #canvas-wrapper
+    canvas#face(width=500, height=444)
+  .links
+    p.credits credits
+    p.webring webring
+    if session
+      a(href='/logout') log out
+  #overlay
+    p altered background gif - original from&#xa0;
+      a(href='http://mrdiv.tumblr.com/post/140708245587/pixeltunneler') mrdiv
 
-      #message
-        input(type='text', placeholder='say something')
-        button(type='button') send
-      #incoming
-      footer
+  #message
+    input(type='text', placeholder='say something')
+    button(type='button') send
+  #incoming
+  footer
 
-    block scripts
-      script(src='/js/footer.js')
-      script(src='/app.bundle.js')
+block scripts
+  script(src='/js/footer.js')
+  script(src='/app.bundle.js')

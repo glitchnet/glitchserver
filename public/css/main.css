@@ -5,6 +5,19 @@ body {
   font-family: 'Space Mono';
 }
 
+.display {
+  text-align: center;
+  color: #fff;
+  background-color: rgba(0, 255, 0, 0.6);
+  padding: 20px;
+  line-height: 2rem;
+  font-size: 1.3rem;
+}
+
+.display input {
+  font-size: 1.3rem;
+}
+
 canvas {
   background-color: transparent;
   margin: 0 auto;
@@ -36,15 +49,18 @@ canvas#face {
   z-index: 5;
 }
 
-.links p {
+.links p, .links a {
+  display: block;
   padding: 5px;
   line-height: 1rem;
   cursor: pointer;
   background-color: rgba(1, 1, 1, 0.4);
   margin-bottom: 1px;
+  text-decoration: none;
+  color: #fff;
 }
 
-.links p:hover {
+.links p:hover, .links a:hover {
   background-color: #0f0;
   color: #111;
 }

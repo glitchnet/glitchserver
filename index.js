@@ -30,7 +30,7 @@ server.connection({
     }
   }
 });
-/*
+
 server.register([Scooter,
   {
     register: Blankie,
@@ -50,13 +50,30 @@ server.register([Scooter,
     return console.log(err);
   }
 });
-*/
+
+server.register(require('hapi-auth-cookie'), (err) => {
+  if (err) {
+    throw err;
+  }
+
+  server.auth.strategy('session', 'cookie', {
+    password: conf.get('password'),
+    ttl: conf.get('session-ttl'),
+    cookie: conf.get('cookie'),
+    keepAlive: true,
+    isSecure: process.env.node === 'production'
+  });
+});
+
 server.register([
   {
     register: require('vision')
   },
   {
     register: require('inert')
+  },
+  {
+    register: require('crumb')
   },
   {
     register: require('hapi-cache-buster'),
