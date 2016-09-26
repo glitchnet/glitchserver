@@ -6,6 +6,7 @@ const http = require('http');
 const Boom = require('boom');
 const Blankie = require('blankie');
 const Scooter = require('scooter');
+const Statehood = require('statehood');
 
 const conf = require('./lib/conf');
 const operators = require('./lib/operators');
@@ -14,6 +15,7 @@ const { routes } = require('./lib/routes');
 const server = new Hapi.Server();
 
 let io;
+let admins = {};
 
 server.connection({
   host: conf.get('domain'),
@@ -152,6 +154,13 @@ server.ext('onPreResponse', (request, reply) => {
   }
 });
 
+const stateDefn = new Statehood.Definitions({
+  encoding: 'iron',
+  password: conf.get('password'),
+  ttl: conf.get('session-ttl'),
+  isSecure: process.env.NODE_ENV === 'production'
+});
+
 server.start((err) => {
   if (err) {
     console.error(err.message);
@@ -160,14 +169,40 @@ server.start((err) => {
 
   io = SocketIO.listen(server.listener);
 
+  io.set('authorization', (handshake, next) => {
+    if (handshake.headers.cookie) {
+      stateDefn.parse(handshake.headers.cookie, (err, state) => {
+        const key = conf.get('cookie');
+        if (state && state[key]) {
+          const sessionID = state[key].phone;
+
+          if (sessionID) {
+            handshake.headers.uid = sessionID;
+          }
+        }
+      });
+    } else {
+      return next('No cookie transmitted.', false);
+    }
+    next(null, true);
+  });
+
   io.on('connection', (socket) => {
     socket.on('join', (data) => {
       console.log('joined');
-      socket.emit('message', 'connected ...');
+
+      if (socket.handshake.headers.uid) {
+        admins[socket.id] = true;
+      }
+      socket.emit('connected', socket.id);
     });
 
     socket.on('message', (data) => {
-      operators.say(data.message, socket);
+      if (socket.handshake.headers.uid) {
+        operators.say(data.message, [socket.id, data.socketID], io);
+      } else {
+        operators.incoming(data.message, socket.id, io, admins);
+      }
     });
   });
 });

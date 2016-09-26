@@ -7,6 +7,7 @@ block content
     form(method='post', action='/login')
       p Enter your number without spaces or dashes
       p You may need to prepend with + for non-U.S/Canadian numbers
+      p e.g. +1112223333
       input(type='tel', name='phone', required)
       if error
         p.error= error

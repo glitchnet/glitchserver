@@ -88,16 +88,36 @@ canvas#face {
 }
 
 #incoming {
+  left: 100px;
+  opacity: 0;
+  padding: 5px;
   background-color: rgba(255, 255, 255, 0.5);
+}
+
+#incoming, #messages-incoming {
+  top: 100px;
   color: #111;
   position: fixed;
-  left: 100px;
-  top: 100px;
-  opacity: 0;
   font-size: 1rem;
-  padding: 5px;
   -webkit-transition: 1s opacity;
   transition: 1s opacity;
+}
+
+#messages-incoming {
+  right: 0;
+  z-index: 3;
+}
+
+#messages-incoming p {
+  background-color: #f0f;
+  padding: 5px 20px 5px 10px;
+  margin-bottom: 2px;
+  max-width: 300px;
+  cursor: pointer;
+}
+
+#messages-incoming p:hover, #messages-incoming p.on {
+  background-color: #0f0;
 }
 
 #incoming.on {

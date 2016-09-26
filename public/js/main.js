@@ -11,6 +11,8 @@ let overlay = document.querySelector('#overlay');
 let canvasOct = document.querySelector('canvas#octagon');
 let canvasFace = document.querySelector('canvas#face');
 let incoming = document.querySelector('#incoming');
+let messagesIncoming = document.querySelector('#messages-incoming');
+let identifier = document.querySelector('#mid');
 let ctx1 = canvasOct.getContext('2d');
 let ctx2 = canvasFace.getContext('2d');
 let isOverlay = false;
@@ -50,6 +52,20 @@ socket.on('messageack', (data) => {
   setTimeout(() => {
     incoming.classList.remove('on');
   }, 5000);
+});
+
+socket.on('receiveack', (data) => {
+  let p = document.createElement('p');
+  p.textContent = data.message;
+  p.id = data.socketID;
+  p.onclick = function (ev) {
+    messagesIncoming.querySelectorAll('p').forEach((m) => {
+      m.classList.remove('on');
+    });
+    identifier.value = ev.target.id;
+    ev.target.classList.add('on');
+  };
+  messagesIncoming.appendChild(p);
 });
 
 let polycoord = [

@@ -13,6 +13,7 @@
     "dev": "webpack --progress --color --watch & nodemon"
   },
   "dependencies": {
+    "bad-words": "^1.4.2",
     "blankie": "^1.2.0",
     "boom": "^4.0.0",
     "crumb": "^6.0.3",
@@ -30,6 +31,7 @@
     "readimage": "^1.1.1",
     "scooter": "^4.0.0",
     "socket.io": "^1.4.8",
+    "statehood": "^5.0.0",
     "twilio-party": "^2.0.0",
     "uuid": "^2.0.2",
     "vision": "^4.1.0",
