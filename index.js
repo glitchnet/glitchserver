@@ -195,14 +195,14 @@ server.start((err) => {
       if (socket.handshake.headers.uid) {
         admins[socket.id] = true;
       }
-
+      operators.say('Hello. I am not alive right now. I hope you enjoy the music.', [socket.id], io);
       socket.emit('connected', socket.id);
     });
 
     if (!socket.handshake.headers.uid) {
       setInterval(() => {
         operators.say('Hello. I am not alive right now. I hope you enjoy the music.', [socket.id], io);
-      }, 15000);
+      }, 12000);
     }
 
     socket.on('message', (data) => {
