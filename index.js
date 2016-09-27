@@ -199,7 +199,7 @@ server.start((err) => {
       if (!socket.handshake.headers.uid) {
         setTimeout(() => {
           operators.say('Hello. I am not alive right now. I hope you enjoy the music.', [socket.id], io);
-        }, 4000);
+        }, 2000);
       }
       socket.emit('connected', socket.id);
     });
