@@ -196,13 +196,14 @@ server.start((err) => {
         admins[socket.id] = true;
       }
 
-      if (!socket.handshake.headers.uid) {
-        setTimeout(() => {
-          operators.say('Hello. I am not alive right now. I hope you enjoy the music.', [socket.id], io);
-        }, 2000);
-      }
       socket.emit('connected', socket.id);
     });
+
+    if (!socket.handshake.headers.uid) {
+      setTimeout(() => {
+        operators.say('Hello. I am not alive right now. I hope you enjoy the music.', [socket.id], io);
+      }, 10000);
+    }
 
     socket.on('message', (data) => {
       if (socket.handshake.headers.uid) {
