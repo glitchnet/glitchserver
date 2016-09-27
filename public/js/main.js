@@ -51,7 +51,7 @@ socket.on('messageack', (data) => {
 
   setTimeout(() => {
     incoming.classList.remove('on');
-  }, 5000);
+  }, 5500);
 });
 
 socket.on('receiveack', (data) => {

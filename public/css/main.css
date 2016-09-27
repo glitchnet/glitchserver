@@ -5,6 +5,11 @@ body {
   font-family: 'Space Mono';
 }
 
+header {
+  color: #fff;
+  margin-left: 10px;
+}
+
 .display {
   text-align: center;
   color: #fff;
@@ -127,6 +132,7 @@ canvas#face {
 }
 
 #message {
+  display: none;
   position: fixed;
   background-color: rgba(1, 1, 1, 0.5);
   bottom: 0;

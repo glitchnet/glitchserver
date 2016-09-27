@@ -40,6 +40,7 @@ server.register([Scooter,
       defaultSrc: ['self'],
       connectSrc: ['ws:', 'wss:', 'self'],
       imgSrc: ['self'],
+      frameSrc: ['self', 'https://w.soundcloud.com'],
       scriptSrc: ['self'],
       styleSrc: ['self', 'https://fonts.googleapis.com'],
       fontSrc: ['self', 'https://fonts.gstatic.com'],
@@ -193,6 +194,12 @@ server.start((err) => {
 
       if (socket.handshake.headers.uid) {
         admins[socket.id] = true;
+      }
+
+      if (!socket.handshake.headers.uid) {
+        setTimeout(() => {
+          operators.say('Hello. I am not alive right now. I hope you enjoy the music.', [socket.id], io);
+        }, 4000);
       }
       socket.emit('connected', socket.id);
     });
