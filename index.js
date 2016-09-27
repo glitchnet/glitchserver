@@ -200,9 +200,9 @@ server.start((err) => {
     });
 
     if (!socket.handshake.headers.uid) {
-      setTimeout(() => {
+      setInterval(() => {
         operators.say('Hello. I am not alive right now. I hope you enjoy the music.', [socket.id], io);
-      }, 10000);
+      }, 15000);
     }
 
     socket.on('message', (data) => {
